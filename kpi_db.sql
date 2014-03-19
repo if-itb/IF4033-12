@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2014 at 12:40 PM
+-- Generation Time: Mar 19, 2014 at 03:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -35,6 +35,19 @@ CREATE TABLE IF NOT EXISTS `files` (
   `hash_value` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_file`,`id_user`),
   KEY `id_user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tokens`
+--
+
+CREATE TABLE IF NOT EXISTS `tokens` (
+  `id_users` int(32) DEFAULT NULL,
+  `token` varchar(64) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `expired` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
