@@ -3,20 +3,30 @@
 	$dbname="kpi_db";
 	$dbusername = "root";
 	$dbpassword = "password";
+	$tbl_name = "users";
+	
 	$dbcon=mysql_connect($dbhost,$dbusername,$dbpassword);
 	$connection_string=mysql_select_db($dbname);
 	
-	if(isset($_GET['username']) && isset($_GET['password'])){
-		$uname = $_GET['username'];
-		$passw = $_GET['password'];
+	if(isset($_POST['myusername']) && isset($_POST['mypassword'])){
+		$myusername = $_POST['myusername'];
+		$mypassword = $_POST['mypassword'];
 
-		$getUser_sql = 'SELECT * FROM users WHERE username="'. $uname . '" AND password = "' . $passw . '"';
-		$getUser = mysql_query($getUser_sql);
-		$getUser_result = mysql_fetch_assoc($getUser);
-		$getUser_RecordCount = mysql_num_rows($getUser);
+		$myusername = stripslashes($myusername);
+		$mypassword = stripslashes($mypassword);
+		$myusername = mysql_real_escape_string($myusername);
+		$mypassword = mysql_real_escape_string($mypassword);
+		$sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
+		$result=mysql_query($sql);
 
-		if($getUser_RecordCount < 1){ echo '0';} 
-		else { echo $getUser_result['username'];
-			}
-	}
+		$count=mysql_num_rows($result);
+		
+		if($count==1){
+		session_register("myusername");
+		session_register("mypassword"); 
+		header("location:login_success.php");
+		}
+		else {
+		echo "Wrong Username or Password";
+		}
 ?>
