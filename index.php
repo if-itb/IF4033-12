@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html> 
 <body>
-<script src="js/ajaxlogin.js" language="javascript"></script>
+<?php /*<script src="js/ajaxlogin.js" language="javascript"></script>
 <script>
 	function login() {
 		//document.getElementById('login_response').innerHTML = "Loading..."
@@ -13,12 +13,12 @@
 		http.open('get', 'php/login.php?username='+uname+'&password='+passw+'&nocache = '+nocache);
 		http.send(null);
 	}
-</script>
+</script>*/?>
 <b>Login</b>
-<form id="login_form" action="javascript:login()" onsubmit="login()" method="post">
-Username: <input type="text" name="myusername"><br>
-Password: <input type="text" name="mypassword"><br>
-<input type="submit" value="Login" name="Submit"> 
+<form name="form1" method="post" action="login.php">
+Username: <input name="myusername" type="text" id="myusername"><br>
+Password: <input name="mypassword" type="text" id="mypassword"><br>
+<input type="submit" name="Submit" value="Login"> 
 
 </form>
 <a href="src/forget_password.php">Forget Password</a>
