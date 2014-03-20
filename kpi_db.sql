@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 19, 2014 at 03:07 PM
--- Server version: 5.6.11
--- PHP Version: 5.5.3
+-- Host: localhost
+-- Generation Time: Mar 20, 2014 at 06:47 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `kpi_db`
 --
-CREATE DATABASE IF NOT EXISTS `kpi_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `kpi_db`;
 
 -- --------------------------------------------------------
 
@@ -63,7 +61,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `salt` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `username`, `email`, `salt`, `password`) VALUES
+(1, 'gabrielle', 'gaby@gmail.com', 'fufu', '12345');
 
 --
 -- Constraints for dumped tables
