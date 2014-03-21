@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 20, 2014 at 06:47 PM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Mar 21, 2014 at 07:32 AM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,6 +38,26 @@ CREATE TABLE IF NOT EXISTS `files` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `login_attempts`
+--
+
+CREATE TABLE IF NOT EXISTS `login_attempts` (
+  `user_id` int(11) NOT NULL,
+  `time` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`user_id`, `time`) VALUES
+(1, '1395382099'),
+(1, '1395382398'),
+(1, '1395382445');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tokens`
 --
 
@@ -61,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `salt` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
