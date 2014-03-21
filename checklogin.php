@@ -5,8 +5,8 @@
 	$dbname="kpi_db";
 	$tbl_name = "users";
 	
-	$link = mysql_connect($dbhost,$dbusername,$dbpassword) or die ("cannot connect");
-	mysql_select_db($dbname,$link) or die ("cannot select DB ".mysql_error());
+	$link = mysqli_connect($dbhost,$dbusername,$dbpassword,$dbname) or die ("cannot connect");
+	//mysql_select_db($dbname,$link) or die ("cannot select DB ".mysql_error());
 	
 	if((!empty($_POST['myusername'])) && (!empty($_POST['mypassword']))){
 		
@@ -19,24 +19,22 @@
 		$myusername = mysql_real_escape_string($myusername);
 		$mypassword = mysql_real_escape_string($mypassword);
 		$sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
-		$result=mysql_query($sql);
+		$result=mysqli_query($dbcon,$sql);
 
-		$count=mysql_num_rows($result);
+		$count=mysqli_num_rows($result);
 		
 		if($count==1){
-		session_start();
-		$_SESSION("myusername") = 1;
-		//$_SESSION("mypassword") = "mypassword"; 
-		header("location:login_success.php");
+			session_start();
+			$_SESSION["username"] = $myusername;
+			$row = mysqli_fetch_array($result);
+			$_SESSION["id_user"] = $row['id_user']; 	//--Satria: pake mysqli_*, rekomendasi dari PHP
+			//$_SESSION["id_user"] = 
+			//$_SESSION("mypassword") = "mypassword"; 
+			header("location:login_success.php");
 		}
 		else {
-		echo "Wrong Username or Password";
+			echo "Wrong Username or Password";
 		}
 	}
-<<<<<<< HEAD
-=======
-//	else {
-//		echo "Failed"
-//	}*/
->>>>>>> 678ab4403f34361154e568a30b20073a13a910e6
+
 ?>

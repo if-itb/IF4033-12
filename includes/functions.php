@@ -55,6 +55,7 @@ function login($username, $password, $mysqli) {
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', 
                               $password . $user_browser);
+					$_SESSION['id_user'] = $user_id;
                     return true;
                 } else {
                     $now = time();
