@@ -1,7 +1,9 @@
 <!DOCTYPE HTML>
 <html> 
 <body>
-
+<script>
+	
+</script>
 <p>Find Your Account</p>
 <form action="javascript:login()" method="post">
 Email: <input type="text" name="email_address"><br>
