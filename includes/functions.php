@@ -99,13 +99,13 @@ function login_check($mysqli) {
  
         $user_id = $_SESSION['user_id'];
         $login_string = $_SESSION['login_string'];
-        $username = $_SESSION['username'];
+		$username = $_SESSION['username'];
 
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
  
         if ($stmt = $mysqli->prepare("SELECT password 
-                                      FROM members 
-                                      WHERE id = ? LIMIT 1")) {
+                                      FROM users 
+                                      WHERE id_user = ? LIMIT 1")) {
 
             $stmt->bind_param('i', $user_id);
             $stmt->execute();
