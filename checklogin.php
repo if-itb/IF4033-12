@@ -1,7 +1,7 @@
 <?php
 	$dbhost="localhost";
 	$dbusername = "root";
-	$dbpassword = "password";
+	$dbpassword = "";
 	$dbname="kpi_db";
 	$tbl_name = "users";
 	
@@ -31,7 +31,7 @@
 		else {
 		echo "Wrong Username or Password";
 		}
-//	}
+	}
 //	else {
 //		echo "Failed"
 //	}*/

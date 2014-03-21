@@ -1,12 +1,10 @@
 <!DOCTYPE HTML>
 <html> 
 <body>
-<script>
-	
-</script>
+
 <p>Find Your Account</p>
-<form action="javascript:login()" method="post">
-Email: <input type="text" name="email_address"><br>
+<form action="send_email.php" method="post">
+Email: <input type="text" name="email" id="email"><br>
 <input type="submit" value="Search"> 
 
 </form>
