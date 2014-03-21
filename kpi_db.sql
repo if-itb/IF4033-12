@@ -90,20 +90,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `email`, `salt`, `password`) VALUES
-(1, 'gabrielle', 'gaby@gmail.com', 'fufu', '12345'),
-(3, 'test_user', 'test@example.com', 'f9aab579fc1b41ed0c44fe4ecdbfcdb4cb99b9023abb241a6db833288f4eea3c02f76e0d35204a8695077dcf81932aa59006423976224be0390395bae152d4ef', '00807432eae173f652f2064bdca1b61b290b52d40e429a7d295d76a71084aa96c0233b82f1feac45529e0726559645acaed6f3ae58a286b9f075916ebf66cacc'),
-(4, 'agnes', 'dam@nik.com', '5fdf6c515f9332458fe1bd55135daa9663269709246c56f415f168225f7f68794abeff14e815e67a8184786f9ba80048ebef52c5e4952497d435f9f0d68430a7', '633b49788d37a5f5a2cd0c102200f617734c7ea05cd7e9d5089eea617fc6ff95286ba5fb2070710c9451f7a3588968043fae0be27e82a699566a4971024548de');
-
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `files`
---
-ALTER TABLE `files`
-  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
