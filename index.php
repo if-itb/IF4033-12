@@ -1,25 +1,39 @@
-<!DOCTYPE HTML>
-<html> 
-<body>
-<!---<script src="js/ajaxlogin.js" language="javascript"></script>
-<script>
-	function login() {
-		//document.getElementById('login_response').innerHTML = "Loading..."
-		alert("login");
-		var uname = encodeURI(document.getElementById('uname_login').value);
-		var passw = encodeURI(document.getElementById('password_login').value);
-		nocache = Math.random();	
-		http.onreadystatechange = loginReply;
-		http.open('get', 'php/login.php?username='+uname+'&password='+passw+'&nocache = '+nocache);
-		http.send(null);
-	}
-</script>-->
-<b>Login</b>
-<form name="form1" method="post" action="checklogin.php">
-Username: <input name="myusername" type="text" id="myusername"><br>
-Password: <input name="mypassword" type="pass" id="mypassword"><br>
-<input type="submit" name="Submit" value="Login"> 
-</form>
-<a href="src/forget_password.php">Forget Password</a>
-</body>
+<?php
+include_once 'includes/db_connect.php';
+include_once 'includes/functions.php';
+ 
+sec_session_start();
+ 
+if (login_check($mysqli) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Secure Login: Log In</title>
+        <script type="text/JavaScript" src="js/sha512.js"></script> 
+        <script type="text/JavaScript" src="js/forms.js"></script> 
+    </head>
+    <body>
+        <?php
+        if (isset($_GET['error'])) {
+            echo '<p class="error">Error Logging In!</p>';
+        }
+        ?> 
+        <form action="includes/process_login.php" method="post" name="login_form">                      
+            Username: <input type="text" name="username" />
+            Password: <input type="password" 
+                             name="password" 
+                             id="password"/>
+            <input type="button" 
+                   value="Login" 
+                   onclick="formhash(this.form, this.form.password);" /> 
+        </form>
+        
+        <p>If you are done, please <a href="includes/logout.php">log out</a>.</p>
+        <p>You are currently logged <?php echo $logged ?>.</p>
+    </body>
 </html>
