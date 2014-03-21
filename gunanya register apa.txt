@@ -1,0 +1,2 @@
+Soalnya password dienkrip dan saltnya dihitung pake sha512 jadi password yang kesimpan di database bukan password yang ada di ingatan user. Jadi untuk amannya testing nanti mending register akun baru dulu, begitu saya pikir teman-teman.
+Terus file upload-file dimasukin di bagian protected_page.php
