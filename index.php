@@ -28,9 +28,10 @@ if (login_check($mysqli) == true) {
             Password: <input type="password" 
                              name="password" 
                              id="password"/>
-            <input type="button" 
-                   value="Login" 
-                   onclick="formhash(this.form, this.form.password);" /> 
+            <input type="submit" 
+                   value="Login" /> 
+                   <!--onclick="formhash(this.form, this.form.password);"--> 
+				   
         </form>
 		<a href="src/forget_password.php"> Forget Password? </a>
         <p>If you don't have a login, please <a href="register.php">register</a></p>

@@ -33,17 +33,24 @@ function login($username, $password, $mysqli) {
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $stmt->store_result();
- 
+		
         $stmt->bind_result($user_id, $email, $db_password, $salt);
         $stmt->fetch();
-
-        $password = hash('sha512', $password . $salt);
+		
+		echo $password." salt: ".$salt."<br/>";
+		echo substr(hash('sha512','Terserah22.e5e48f76e3fc4702afaadf0a6c6e318b'),0,32)."</br>";
+        $password = substr(hash('sha512', $password . $salt),0,32);
+		
         if ($stmt->num_rows == 1) {
- 
+			
             if (checkbrute($user_id, $mysqli) == true) {
-                return false;
+               
+				return false;
             } else {
+				echo "db pass ".$db_password."</br>";
+				echo "pass ".$password;
                 if ($db_password == $password) {
+					
                     $user_browser = $_SERVER['HTTP_USER_AGENT'];
                     
                     $user_id = preg_replace("/[^0-9]+/", "", $user_id);
@@ -58,6 +65,7 @@ function login($username, $password, $mysqli) {
 					$_SESSION['id_user'] = $user_id;
                     return true;
                 } else {
+				
                     $now = time();
                     $mysqli->query("INSERT INTO login_attempts(user_id, time)
                                     VALUES ('$user_id', '$now')");

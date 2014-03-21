@@ -4,10 +4,10 @@ include_once 'functions.php';
  
 sec_session_start();
  
-if (isset($_POST['username'], $_POST['p'])) {
+if (isset($_POST['username']) && isset( $_POST['password'])) {
     $username = $_POST['username'];
-    $password = $_POST['p'];
-	
+    $password = $_POST['password'];
+	echo $username." ". $password;
     if (login($username, $password, $mysqli) == true) {
         header('Location: ../protected_page.php');
     } else {

@@ -36,9 +36,9 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     }
  
     if (empty($error_msg)) {
-        $random_salt = hash('sha512', uniqid(mcrypt_create_iv(16), MCRYPT_DEV_RANDOM));
+        $random_salt =substr(hash('sha512', uniqid(mcrypt_create_iv(16), MCRYPT_DEV_RANDOM)),0,32);
 		
-        $password = hash('sha512', $password . $random_salt);
+        $password = substr(hash('sha512', $password . $random_salt),0,32);
 
         if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
             $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
